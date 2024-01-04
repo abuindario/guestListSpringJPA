@@ -1,0 +1,58 @@
+<h1 th:text="${msg}"></h1>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Actions</th>
+	</tr>
+	<tr th:id="|row${guest.id}|" th:each="guest : ${guestList}">
+		<td th:text="${guest.id}"></td>
+		<td>
+			<input type="text" name="name" th:value="${guest.guestName}" />
+		</td>
+		<td>
+			<a th:href="|/deleteGuest/${guest.id}|">Delete</a>
+			<button th:onclick="|updateGuest(${guest.id})|">Update</button>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<input type="text" name="newGuest" placeholder="Guest Name" />
+		</td>
+		<td>
+			<button onclick="newGuest()">New Guest</button>
+		</td>
+	</tr>
+</table>
+<form action="/updateGuest">
+	<input type="hidden" name="guestId" />
+	<input type="hidden" name="newGuestName" />
+</form>
+<form action="/newGuest">
+	<input type="hidden" name="guestName" placeholder="Guest Name"/>
+</form>
+<a href="index.html">Home Page</a>
+<script>
+	const updateGuest = (id) => {
+		let row = document.querySelector('#row' + id);
+		let name = row.querySelector('input[name="name"]').value;
+		if(name.trim().length > 0) {
+			document.querySelector('[name=guestId]').value = id;
+			document.querySelector('[name=newGuestName]').value = name;
+			document.querySelector('form[action="/updateGuest"]').submit();
+		} else {
+			window.alert("Guest name cannot be empty!");
+		}
+	}
+	
+	const newGuest = () => {
+		let name = document.querySelector('input[name="newGuest"]').value;
+		if(name.trim().length > 0) {
+			document.querySelector('input[name="guestName"]').value = name;
+			document.querySelector('form[action="/newGuest"]').submit();
+		} else {
+			window.alert("Guest name cannot be empty!");
+		}
+	}
+</script>
