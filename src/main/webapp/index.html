@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Spring:: Index</title>
+		<title>Guest Manager</title>
+		<style>
+			body {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			h1 {
+				width: 100%;
+				text-align: center;
+				color: #009688;
+				border-bottom: 1px solid #009688;
+				height: 50px;
+			}
+			table {
+				margin-top: 50px;
+				width: 100%;
+				text-align: center;
+				font-size: large;
+			}
+			table td {
+				padding-top: 20px;
+			}
+			a {
+				color: #009688;
+				text-decoration: none;	
+			}
+			a:hover {
+				font-size: larger;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Welcome to my Spring Boot app</h1>
+		<h1>Welcome to Guest Manager</h1>
 		<table>
 			<tr>
-				<th th:text="${msg}">
-				</th>
-			</tr>
-			<tr>
 				<td>
-					<a href="/queryGuests">View Guest List</a>
+					<a href="/queryGuests">( Guest List )</a>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<a href="insert.html">Create Guest</a>
+					<a href="insert.html">( New Guest )</a>
 				</td>
 			</tr>
 		</table>
